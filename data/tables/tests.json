@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-04",
+  "runs": [
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_certiphy_r5.py tests/test_certiphy.py tests/test_certiphy_deep.py -q",
+      "result": "45 passed",
+      "note": "Initial 8 R5 cases plus unchanged 37 R4/R4-Deep cases. An earlier source-text leakage test falsely matched a comment substring; replaced with AST attribute inspection before this passing run."
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_certiphy_r5.py -q",
+      "result": "10 passed",
+      "note": "After adding enabled-gate equivalence and TDL-E Ricean split cases. Receiver/source code unchanged since first passing run."
+    }
+  ],
+  "unique_passing_cases": 47,
+  "historical_experiments_rerun": false,
+  "floating_point_certified": false
+}

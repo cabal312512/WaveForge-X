@@ -1,0 +1,169 @@
+{
+  "fractional_response": [
+    {
+      "delay": 0.01,
+      "energy": 0.9999999999999999,
+      "rms_full": 0.005207407749203276,
+      "max_full": 0.031410845732880076,
+      "rms_80percent": 2.8575839012997414e-05,
+      "max_80percent": 2.871206962322364e-05
+    },
+    {
+      "delay": 0.1,
+      "energy": 1.0000000000000002,
+      "rms_full": 0.05123166231587921,
+      "max_full": 0.30909880741998014,
+      "rms_80percent": 0.002785307436786211,
+      "max_80percent": 0.002790715658217857
+    },
+    {
+      "delay": 0.37,
+      "energy": 1.0,
+      "rms_full": 0.15214493964653422,
+      "max_full": 0.919767586816867,
+      "rms_80percent": 0.0266405887388794,
+      "max_80percent": 0.026694022170815547
+    },
+    {
+      "delay": 0.5,
+      "energy": 1.0,
+      "rms_full": 0.16577142593829983,
+      "max_full": 1.002772639780247,
+      "rms_80percent": 0.03352351112483445,
+      "max_80percent": 0.03359453184096057
+    },
+    {
+      "delay": 0.9,
+      "energy": 0.9999999999999998,
+      "rms_full": 0.05154882966592883,
+      "max_full": 0.31099728241682006,
+      "rms_80percent": 0.005706337801737716,
+      "max_80percent": 0.0057266015726315156
+    },
+    {
+      "delay": 3.0,
+      "energy": 1.0,
+      "rms_full": 0.0,
+      "max_full": 0.0,
+      "rms_80percent": 0.0,
+      "max_80percent": 0.0
+    },
+    {
+      "delay": 7.73,
+      "energy": 1.0000000000000002,
+      "rms_full": 0.1245890791622773,
+      "max_full": 0.7530258820702016,
+      "rms_80percent": 0.02216007953330472,
+      "max_80percent": 0.02221716649712539
+    }
+  ],
+  "doppler": {
+    "samples": 7200,
+    "power": 0.9987181894805142,
+    "lags": [
+      0,
+      100,
+      500,
+      1000
+    ],
+    "measured_real": [
+      1.0004958347833255,
+      0.9997934556343074,
+      0.9886781823011591,
+      0.95643468369169
+    ],
+    "measured_imag": [
+      3.49400645835683e-19,
+      0.00011782957486863371,
+      0.0005889473384335716,
+      0.0011663196303495394
+    ],
+    "jakes": [
+      1.0,
+      0.999581715381826,
+      0.9895691026366681,
+      0.9586026317576984
+    ]
+  },
+  "decimal": [
+    {
+      "waveform": "ofdm",
+      "noise": 0.01,
+      "decimal80_110_error": 0.0,
+      "disagreement": 0.0,
+      "bound": 0.0,
+      "met": true,
+      "min_margin": 0.009068452256966175,
+      "envelope_defect_min": 0.003138579182323094,
+      "fp_certified": false
+    },
+    {
+      "waveform": "ofdm",
+      "noise": 1e-08,
+      "decimal80_110_error": 0.0,
+      "disagreement": 0.0,
+      "bound": 0.0,
+      "met": true,
+      "min_margin": 0.001904386747794251,
+      "envelope_defect_min": 0.0031385791823230927,
+      "fp_certified": false
+    },
+    {
+      "waveform": "otfs",
+      "noise": 0.01,
+      "decimal80_110_error": 0.0,
+      "disagreement": 0.0,
+      "bound": 0.0,
+      "met": true,
+      "min_margin": 0.002877231002356595,
+      "envelope_defect_min": 0.003138579182323094,
+      "fp_certified": false
+    },
+    {
+      "waveform": "otfs",
+      "noise": 1e-08,
+      "decimal80_110_error": 0.0,
+      "disagreement": 0.0,
+      "bound": 0.0,
+      "met": true,
+      "min_margin": 0.0006413451410630655,
+      "envelope_defect_min": 0.0031385791823230927,
+      "fp_certified": false
+    },
+    {
+      "waveform": "afdm",
+      "noise": 0.01,
+      "decimal80_110_error": 0.0,
+      "disagreement": 0.0,
+      "bound": 0.0,
+      "met": true,
+      "min_margin": 0.007159422930497317,
+      "envelope_defect_min": 0.003138579182322684,
+      "fp_certified": false
+    },
+    {
+      "waveform": "afdm",
+      "noise": 1e-08,
+      "decimal80_110_error": 0.0,
+      "disagreement": 0.0,
+      "bound": 0.0,
+      "met": true,
+      "min_margin": 0.015724938353993245,
+      "envelope_defect_min": 0.003138579182322604,
+      "fp_certified": false
+    }
+  ],
+  "stress": {
+    "n": 1024,
+    "modulation": "64qam",
+    "fd": 1800,
+    "disagreement": 0.0,
+    "bound": 0.00927734375,
+    "met": true,
+    "status": "certified_exact_arithmetic",
+    "reference_unknown": 0,
+    "gate_enabled": false,
+    "fp_certified": false
+  },
+  "historical_stress": "Reuse tests/test_certiphy.py and test_certiphy_deep.py: boundary, cancellation, drift, invalid Ritz, exact Gray enumeration; no historical experiments rerun"
+}

@@ -1,0 +1,48 @@
+name: Research checks and release
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Project-local environment
+        shell: bash
+        run: |
+          source scripts/env.sh
+          python -m venv .venv
+          .venv/bin/python -m pip install -r requirements.txt
+          .venv/bin/python -m pip install --no-deps -e .
+      - name: Numerical and artifact checks
+        shell: bash
+        run: |
+          source scripts/env.sh
+          .venv/bin/python -m pytest -q
+          .venv/bin/python scripts/verify_evidence.py --extract
+          .venv/bin/python scripts/check_publication.py
+          .venv/bin/python scripts/make_figures.py
+  release:
+    if: github.event_name == 'push' && contains(github.event.head_commit.message, '[release]')
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and publish frozen assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/verify_evidence.py
+          python scripts/publish_release.py

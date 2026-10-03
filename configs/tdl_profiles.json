@@ -1,0 +1,324 @@
+{
+  "version": "TR 38.901 V19.5.0 (2026-09)",
+  "accessed": "2026-10-04",
+  "url": "https://www.3gpp.org/ftp/Specs/archive/38_series/38.901/38901-j50.zip",
+  "sha256": "6c3d1e599fa4d9e64e3f29554270780f5f2c731caf3e53a209beead44b54da7b",
+  "profiles": {
+    "A": [
+      {
+        "delay": 0.0,
+        "power_db": -13.4,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.3819,
+        "power_db": 0.0,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.4025,
+        "power_db": -2.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.5868,
+        "power_db": -4.0,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.461,
+        "power_db": -6.0,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.5375,
+        "power_db": -8.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.6708,
+        "power_db": -9.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.575,
+        "power_db": -10.5,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.7618,
+        "power_db": -7.5,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 1.5375,
+        "power_db": -15.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 1.8978,
+        "power_db": -6.6,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 2.2242,
+        "power_db": -16.7,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 2.1718,
+        "power_db": -12.4,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 2.4942,
+        "power_db": -15.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 2.5119,
+        "power_db": -10.8,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 3.0582,
+        "power_db": -11.3,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 4.081,
+        "power_db": -12.7,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 4.4579,
+        "power_db": -16.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 4.5695,
+        "power_db": -18.3,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 4.7966,
+        "power_db": -18.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 5.0066,
+        "power_db": -16.6,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 5.3043,
+        "power_db": -19.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 9.6586,
+        "power_db": -29.7,
+        "fading": "Rayleigh"
+      }
+    ],
+    "C": [
+      {
+        "delay": 0.0,
+        "power_db": -4.4,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.2099,
+        "power_db": -1.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.2219,
+        "power_db": -3.5,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.2329,
+        "power_db": -5.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.2176,
+        "power_db": -2.5,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.6366,
+        "power_db": 0.0,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.6448,
+        "power_db": -2.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.656,
+        "power_db": -3.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.6584,
+        "power_db": -7.4,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.7935,
+        "power_db": -7.1,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.8213,
+        "power_db": -10.7,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.9336,
+        "power_db": -11.1,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 1.2285,
+        "power_db": -5.1,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 1.3083,
+        "power_db": -6.8,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 2.1704,
+        "power_db": -8.7,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 2.7105,
+        "power_db": -13.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 4.2589,
+        "power_db": -13.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 4.6003,
+        "power_db": -13.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 5.4902,
+        "power_db": -15.8,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 5.6077,
+        "power_db": -17.1,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 6.3065,
+        "power_db": -16.0,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 6.6374,
+        "power_db": -15.7,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 7.0427,
+        "power_db": -21.6,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 8.6523,
+        "power_db": -22.8,
+        "fading": "Rayleigh"
+      }
+    ],
+    "E": [
+      {
+        "delay": 0.0,
+        "power_db": -0.03,
+        "fading": "LOS path"
+      },
+      {
+        "delay": 0.0,
+        "power_db": -22.03,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.5133,
+        "power_db": -15.8,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.544,
+        "power_db": -18.1,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.563,
+        "power_db": -19.8,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.544,
+        "power_db": -22.9,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 0.7112,
+        "power_db": -22.4,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 1.9092,
+        "power_db": -18.6,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 1.9293,
+        "power_db": -20.8,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 1.9589,
+        "power_db": -22.6,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 2.6426,
+        "power_db": -22.3,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 3.7136,
+        "power_db": -25.6,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 5.4524,
+        "power_db": -20.2,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 12.0034,
+        "power_db": -29.8,
+        "fading": "Rayleigh"
+      },
+      {
+        "delay": 20.6519,
+        "power_db": -29.2,
+        "fading": "Rayleigh"
+      }
+    ]
+  }
+}

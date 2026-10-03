@@ -1,0 +1,83 @@
+[
+  {
+    "profile": "A",
+    "method": "gray",
+    "peak_traced_bytes": 52350170,
+    "current_traced_bytes": 2325165,
+    "receiver_resident_estimate": 2465800,
+    "nnz": 56320,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "A",
+    "method": "deep",
+    "peak_traced_bytes": 52347380,
+    "current_traced_bytes": 2337055,
+    "receiver_resident_estimate": 2465800,
+    "nnz": 56320,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "A",
+    "method": "selective",
+    "peak_traced_bytes": 52347268,
+    "current_traced_bytes": 2334370,
+    "receiver_resident_estimate": 2465800,
+    "nnz": 56320,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "C",
+    "method": "gray",
+    "peak_traced_bytes": 54607356,
+    "current_traced_bytes": 2193485,
+    "receiver_resident_estimate": 2342920,
+    "nnz": 53248,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "C",
+    "method": "deep",
+    "peak_traced_bytes": 54607340,
+    "current_traced_bytes": 2212055,
+    "receiver_resident_estimate": 2342920,
+    "nnz": 53248,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "C",
+    "method": "selective",
+    "peak_traced_bytes": 54607308,
+    "current_traced_bytes": 2193439,
+    "receiver_resident_estimate": 2342920,
+    "nnz": 53248,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "E",
+    "method": "gray",
+    "peak_traced_bytes": 32022876,
+    "current_traced_bytes": 3298572,
+    "receiver_resident_estimate": 3448840,
+    "nnz": 80896,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "E",
+    "method": "deep",
+    "peak_traced_bytes": 32022852,
+    "current_traced_bytes": 3317243,
+    "receiver_resident_estimate": 3448840,
+    "nnz": 80896,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  },
+  {
+    "profile": "E",
+    "method": "selective",
+    "peak_traced_bytes": 32022812,
+    "current_traced_bytes": 3299236,
+    "receiver_resident_estimate": 3448840,
+    "nnz": 80896,
+    "note": "Python/NumPy traced allocations, not OS RSS; tracing overhead excluded from primary CPU comparisons"
+  }
+]

@@ -1,0 +1,331 @@
+{
+  "source_hash": "5cbc27bd57d6c8779e05f3bc889fb681b6d169b6a7b10682500fec89d1163eaf",
+  "gate": [
+    0.01,
+    12.0
+  ],
+  "targets": [
+    {
+      "name": "tight",
+      "mean": 0.0005,
+      "tail": 0.002
+    },
+    {
+      "name": "loose",
+      "mean": 0.002,
+      "tail": 0.008
+    }
+  ],
+  "selected": {
+    "tight": {
+      "fixed": "fixed:32",
+      "residual": "residual:0.001",
+      "stable": "stable:2",
+      "selective": "selective:0.05"
+    },
+    "loose": {
+      "fixed": "fixed:16",
+      "residual": "residual:0.003",
+      "stable": "stable:2",
+      "selective": "selective:0.05"
+    }
+  },
+  "methods": {
+    "global:0": {
+      "method": "global",
+      "delta": 0.0,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "radau:0": {
+      "method": "radau",
+      "delta": 0.0,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "gray:0": {
+      "method": "gray",
+      "delta": 0.0,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "deep:0": {
+      "method": "deep",
+      "delta": 0.0,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "selective:0": {
+      "method": "selective",
+      "delta": 0.0,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "global:0.01": {
+      "method": "global",
+      "delta": 0.01,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "radau:0.01": {
+      "method": "radau",
+      "delta": 0.01,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "gray:0.01": {
+      "method": "gray",
+      "delta": 0.01,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "deep:0.01": {
+      "method": "deep",
+      "delta": 0.01,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "selective:0.01": {
+      "method": "selective",
+      "delta": 0.01,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "global:0.05": {
+      "method": "global",
+      "delta": 0.05,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "radau:0.05": {
+      "method": "radau",
+      "delta": 0.05,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "gray:0.05": {
+      "method": "gray",
+      "delta": 0.05,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "deep:0.05": {
+      "method": "deep",
+      "delta": 0.05,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "selective:0.05": {
+      "method": "selective",
+      "delta": 0.05,
+      "gate": [
+        0.01,
+        12.0
+      ]
+    },
+    "energy:0.01": {
+      "method": "energy",
+      "delta": 0.01
+    },
+    "direction:0.01": {
+      "method": "direction",
+      "delta": 0.01
+    },
+    "fixed:32": {
+      "method": "fixed",
+      "delta": 0.01,
+      "k": 32
+    },
+    "residual:0.001": {
+      "method": "residual_fast",
+      "delta": 0.01,
+      "tol": 0.001
+    },
+    "stable:2": {
+      "method": "stable_fast",
+      "delta": 0.01,
+      "stable": 2
+    },
+    "fixed:16": {
+      "method": "fixed",
+      "delta": 0.01,
+      "k": 16
+    },
+    "residual:0.003": {
+      "method": "residual_fast",
+      "delta": 0.01,
+      "tol": 0.003
+    }
+  },
+  "conditions": [
+    {
+      "condition": "A_5_12",
+      "profile": "A",
+      "fd": 5.0,
+      "snr": 12.0,
+      "n": 256,
+      "modulation": "qpsk",
+      "ds": 1e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "A_5_28",
+      "profile": "A",
+      "fd": 5.0,
+      "snr": 28.0,
+      "n": 1024,
+      "modulation": "16qam",
+      "ds": 1e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "A_500_12",
+      "profile": "A",
+      "fd": 500.0,
+      "snr": 12.0,
+      "n": 1024,
+      "modulation": "qpsk",
+      "ds": 3e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "A_500_28",
+      "profile": "A",
+      "fd": 500.0,
+      "snr": 28.0,
+      "n": 256,
+      "modulation": "16qam",
+      "ds": 3e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "C_5_12",
+      "profile": "C",
+      "fd": 5.0,
+      "snr": 12.0,
+      "n": 1024,
+      "modulation": "16qam",
+      "ds": 3e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "C_5_28",
+      "profile": "C",
+      "fd": 5.0,
+      "snr": 28.0,
+      "n": 256,
+      "modulation": "qpsk",
+      "ds": 3e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "C_500_12",
+      "profile": "C",
+      "fd": 500.0,
+      "snr": 12.0,
+      "n": 256,
+      "modulation": "16qam",
+      "ds": 1e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "C_500_28",
+      "profile": "C",
+      "fd": 500.0,
+      "snr": 28.0,
+      "n": 1024,
+      "modulation": "qpsk",
+      "ds": 1e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "E_5_12",
+      "profile": "E",
+      "fd": 5.0,
+      "snr": 12.0,
+      "n": 256,
+      "modulation": "qpsk",
+      "ds": 1e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "E_5_28",
+      "profile": "E",
+      "fd": 5.0,
+      "snr": 28.0,
+      "n": 1024,
+      "modulation": "16qam",
+      "ds": 1e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "E_500_12",
+      "profile": "E",
+      "fd": 500.0,
+      "snr": 12.0,
+      "n": 1024,
+      "modulation": "qpsk",
+      "ds": 3e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    },
+    {
+      "condition": "E_500_28",
+      "profile": "E",
+      "fd": 500.0,
+      "snr": 28.0,
+      "n": 256,
+      "modulation": "16qam",
+      "ds": 3e-07,
+      "cp": 128,
+      "fs": 7680000.0
+    }
+  ],
+  "confirmation_seedbase": 920000,
+  "confirmation_repeats": 4,
+  "confirmation_frames": 2,
+  "cluster": "independent condition/channel seed; all waveforms and frames pooled within cluster",
+  "max_iterations": 256,
+  "work_cap": "setup + 300 PCG steps + 30e6*N/1024",
+  "primary": "selective vs Gray and Radau at delta .01, all 48 clusters; ratio of means and paired cluster bootstrap",
+  "no_test_retuning": true,
+  "floating_point_certified": false
+}

@@ -1,0 +1,16 @@
+.venv/
+.cache/
+.tools/
+.external/
+results/
+logs/
+build/
+dist/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.coverage
+.DS_Store
+Thumbs.db
+/figures/
+/data/generated/

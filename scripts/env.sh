@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Source this file: source scripts/env.sh. No installation or global writes.
+WAVEFORGE_PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+export WAVEFORGE_PROJECT_ROOT
+export PIP_CACHE_DIR="$WAVEFORGE_PROJECT_ROOT/.cache/pip"
+export PIP_CONFIG_FILE=/dev/null
+export PIP_DISABLE_PIP_VERSION_CHECK=1
+export PIP_REQUIRE_VIRTUALENV=true
+export MPLCONFIGDIR="$WAVEFORGE_PROJECT_ROOT/.cache/matplotlib"
+export MPLBACKEND=Agg
+export NUMBA_CACHE_DIR="$WAVEFORGE_PROJECT_ROOT/.cache/numba"
+export XDG_CACHE_HOME="$WAVEFORGE_PROJECT_ROOT/.cache"
+export XDG_CONFIG_HOME="$WAVEFORGE_PROJECT_ROOT/.cache/config"
+export XDG_DATA_HOME="$WAVEFORGE_PROJECT_ROOT/.cache/data"
+export TMPDIR="$WAVEFORGE_PROJECT_ROOT/.cache/tmp"
+export TMP="$TMPDIR"
+export TEMP="$TMPDIR"
+export PYTHONPYCACHEPREFIX="$WAVEFORGE_PROJECT_ROOT/.cache/python"
+export PYTHONUSERBASE="$WAVEFORGE_PROJECT_ROOT/.cache/python-userbase"
+export PYTHONNOUSERSITE=1
+export PYTHONHASHSEED=0
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export VECLIB_MAXIMUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export COVERAGE_FILE="$WAVEFORGE_PROJECT_ROOT/.cache/coverage/.coverage"
+mkdir -p "$PIP_CACHE_DIR" "$MPLCONFIGDIR" "$NUMBA_CACHE_DIR" "$TMPDIR" \
+  "$PYTHONPYCACHEPREFIX" "$PYTHONUSERBASE" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" \
+  "$WAVEFORGE_PROJECT_ROOT/.cache/pytest" "$WAVEFORGE_PROJECT_ROOT/.cache/coverage" \
+  "$WAVEFORGE_PROJECT_ROOT/.cache/experiments" \
+  "$WAVEFORGE_PROJECT_ROOT/.external" "$WAVEFORGE_PROJECT_ROOT/.tools" \
+  "$WAVEFORGE_PROJECT_ROOT/results" "$WAVEFORGE_PROJECT_ROOT/figures" \
+  "$WAVEFORGE_PROJECT_ROOT/logs" "$WAVEFORGE_PROJECT_ROOT/data/generated"

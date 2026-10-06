@@ -1,0 +1,12 @@
+{
+  "declared_before_confirmation": true,
+  "primary": "delta .01 selective versus Gray and Radau; all 48 independent channel clusters",
+  "bootstrap": {"replicates": 5000, "seed": 975001, "unit": "condition/channel seed; average all frames and waveforms inside each cluster", "confidence": 0.95},
+  "quality_transfer": "Both frozen validation-selected methods must satisfy test cluster mean <= q and P90 cluster mean <= q_tail.",
+  "empirical_equivalence": "Additionally require the 95% paired cluster bootstrap CI of mean disagreement difference to lie wholly inside [-q/2,q/2], and absolute P90 cluster difference <= q_tail/2. This practical tolerance is predeclared, not a proof of equal distribution.",
+  "unmatched": "Retain raw costs and quality; no same-quality speedup ratio. Say quality matching did not transfer.",
+  "subgroups": "Four channel clusters per condition: descriptive only; no subgroup significance claims.",
+  "tails": "Report empirical P50/P90/P95/P99 frame work and CPU; do not treat correlated bits or waveforms as independent samples.",
+  "cpu": "End-to-end receiver setup+solve timings; randomized deterministic method rotation; no claim of hardware latency. Preparation timing varies across independent rebuilds.",
+  "caps": "All failed or unknown requests remain in every cost and BER denominator. No fallback. No test retuning."
+}

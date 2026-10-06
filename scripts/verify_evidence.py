@@ -33,3 +33,5 @@ def verify(extract=False):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--extract',action='store_true');a=p.parse_args();verify(a.extract)
+    from check_public_export import main as check_public_export
+    check_public_export()

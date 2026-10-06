@@ -1,0 +1,13 @@
+variant,selector,reference,mean,std,ci_low,ci_high,n_seeds
+"{""objective.switching_weight"": 0}",linucb,linucb,0.0,0.0,0.0,0.0,10
+"{""objective.switching_weight"": 0}",sticky_linucb,linucb,-0.44810000100345243,0.8237703545368484,-1.0373898130698502,0.14118981106294543,10
+"{""objective.switching_weight"": 0}",uncertainty_aware,linucb,-0.10801733761313556,0.817999990081988,-0.6931792796166794,0.4771446043904082,10
+"{""objective.switching_weight"": 0.05}",linucb,linucb,0.0,0.0,0.0,0.0,10
+"{""objective.switching_weight"": 0.05}",sticky_linucb,linucb,-0.6984103068152681,0.59780240740178,-1.1260523873665864,-0.2707682262639496,10
+"{""objective.switching_weight"": 0.05}",uncertainty_aware,linucb,-0.38088583398496034,1.0479747779266393,-1.1305618286763788,0.3687901607064581,10
+"{""objective.switching_weight"": 0.15}",linucb,linucb,0.0,0.0,0.0,0.0,10
+"{""objective.switching_weight"": 0.15}",sticky_linucb,linucb,-4.463803593789469,1.4648921322020063,-5.511724297088158,-3.415882890490779,10
+"{""objective.switching_weight"": 0.15}",uncertainty_aware,linucb,-2.950110532769271,1.588825271778768,-4.086687663345014,-1.813533402193528,10
+"{""objective.switching_weight"": 0.4}",linucb,linucb,0.0,0.0,0.0,0.0,10
+"{""objective.switching_weight"": 0.4}",sticky_linucb,linucb,-14.119148381627019,3.987895558930516,-16.971917010068196,-11.266379753185843,10
+"{""objective.switching_weight"": 0.4}",uncertainty_aware,linucb,-8.475116310752696,3.299930639509911,-10.83574448300863,-6.114488138496762,10

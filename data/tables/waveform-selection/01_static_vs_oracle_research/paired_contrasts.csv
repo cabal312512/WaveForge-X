@@ -1,0 +1,4 @@
+variant,selector,reference,mean,std,ci_low,ci_high,n_seeds
+{},always_afdm,always_ofdm,-7.382851738855348,2.811696214307169,-9.394218043301253,-5.371485434409443,10
+{},always_ofdm,always_ofdm,0.0,0.0,0.0,0.0,10
+{},always_otfs,always_ofdm,-6.204243831389689,2.5018113678824454,-7.9939318708845315,-4.414555791894846,10

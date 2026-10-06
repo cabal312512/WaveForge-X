@@ -32,7 +32,7 @@ def fractional_kernel(delay, half=16):
 class TDLProfile:
     def __init__(self, profile, seed, delay_spread_s=100e-9, doppler_hz=5.,
                  sample_rate_hz=7.68e6, half=16, sinusoids=32, table_path=None):
-        table_path = table_path or Path(__file__).resolve().parents[3]/'configs/tdl_profiles.json'
+        table_path = table_path or Path(__file__).resolve().parents[3]/'configs/research_v5/tdl_profiles.json'
         table = json.loads(Path(table_path).read_text())['profiles'][profile]
         self.profile, self.seed = profile, int(seed)
         self.sample_rate_hz, self.doppler_hz = float(sample_rate_hz), float(doppler_hz)

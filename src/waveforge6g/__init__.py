@@ -1,2 +1,2 @@
-"""WaveForge-X: compute-budgeted wireless receiver research."""
-__version__ = "1.0.0"
+"""WaveForge-X: reproducible waveform, receiver and reuse research."""
+__version__ = "1.1.0"

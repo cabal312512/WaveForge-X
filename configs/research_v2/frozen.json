@@ -1,0 +1,165 @@
+{
+  "version": "r2-1",
+  "parameters": {
+    "horizon": 16,
+    "block": 8,
+    "sticky_hold": 15,
+    "multiplier": 21.877850952407872
+  },
+  "deployable_fixed_action": 1,
+  "families": {
+    "near_tie": {
+      "scenario": "stable_low_mobility",
+      "max_doppler_hz": 0,
+      "delay_samples": 0,
+      "path_count": 1,
+      "correlation": 1,
+      "snr_db": 12
+    },
+    "fixed_region": {
+      "scenario": "stable_low_mobility",
+      "max_doppler_hz": 15,
+      "delay_samples": 6,
+      "correlation": 0.995,
+      "snr_db": 12
+    },
+    "slow_change": {
+      "scenario": "abrupt_change",
+      "max_doppler_hz": 2400,
+      "delay_samples": 6,
+      "change_interval": 60,
+      "snr_db": 12
+    },
+    "fast_change": {
+      "scenario": "mixed_extreme_mobility",
+      "max_doppler_hz": 2400,
+      "delay_samples": 6,
+      "change_interval": 15,
+      "snr_db": 12
+    }
+  },
+  "confirm_seeds": {
+    "near_tie": [
+      10001,
+      10002,
+      10003,
+      10004,
+      10005,
+      10006,
+      10007,
+      10008,
+      10009,
+      10010,
+      10011,
+      10012,
+      10013,
+      10014,
+      10015,
+      10016,
+      10017,
+      10018,
+      10019,
+      10020
+    ],
+    "fixed_region": [
+      10101,
+      10102,
+      10103,
+      10104,
+      10105,
+      10106,
+      10107,
+      10108,
+      10109,
+      10110,
+      10111,
+      10112,
+      10113,
+      10114,
+      10115,
+      10116,
+      10117,
+      10118,
+      10119,
+      10120
+    ],
+    "slow_change": [
+      10201,
+      10202,
+      10203,
+      10204,
+      10205,
+      10206,
+      10207,
+      10208,
+      10209,
+      10210,
+      10211,
+      10212,
+      10213,
+      10214,
+      10215,
+      10216,
+      10217,
+      10218,
+      10219,
+      10220
+    ],
+    "fast_change": [
+      10301,
+      10302,
+      10303,
+      10304,
+      10305,
+      10306,
+      10307,
+      10308,
+      10309,
+      10310,
+      10311,
+      10312,
+      10313,
+      10314,
+      10315,
+      10316,
+      10317,
+      10318,
+      10319,
+      10320
+    ]
+  },
+  "epochs": 120,
+  "selection_k": 16,
+  "validation_k": 16,
+  "k64_rule": "first predeclared seed of each family, both independent streams",
+  "primary_contrasts": [
+    "cadc-sticky",
+    "cadc-development_selected_fixed"
+  ],
+  "practical_threshold_per_epoch": 0.002,
+  "confidence": 0.975,
+  "tuning": "one preset per online method; no hyperparameter search; empirical CADC scale calibrated on four held-out development trajectories",
+  "source_inputs": [
+    {
+      "path": "E:\\WaveForge-6G\\results\\research_v2\\calibrate\\fast_change_3104_T120_287ef1a473",
+      "manifest_sha": "c783191490634d5f9930902fa6758b6f5aa90f2b684abe9f95f07b30db5be246"
+    },
+    {
+      "path": "E:\\WaveForge-6G\\results\\research_v2\\calibrate\\fixed_region_3102_T120_8ba427e68b",
+      "manifest_sha": "6c546beccff29e52563ceb993fb24fd8985e2f1876360377dcdea6c1ede09cd2"
+    },
+    {
+      "path": "E:\\WaveForge-6G\\results\\research_v2\\calibrate\\near_tie_3101_T120_ce6b4af7fa",
+      "manifest_sha": "0b44f1ef7aee4320a488fd23a7d7b52f0082b02c087dc59afd4103f6ff68df31"
+    },
+    {
+      "path": "E:\\WaveForge-6G\\results\\research_v2\\calibrate\\slow_change_3103_T120_719f153661",
+      "manifest_sha": "e6b4ef5c9d508b8a7017c8e47643657eebfa83d8d71d314bb49ffc473c3bcaa8"
+    }
+  ],
+  "budget": {
+    "seconds": 14400,
+    "phy_evaluations": 2000000,
+    "bytes": 5368709120
+  }
+}

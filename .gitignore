@@ -14,3 +14,19 @@ __pycache__/
 Thumbs.db
 /figures/
 /data/generated/
+
+# Publication and private working materials never belong in this edition.
+/paper/
+/output/
+*.tex
+*.bib
+*.bbl
+*.cls
+*.bst
+*.aux
+*.log
+*.synctex.gz
+**/*prompt*
+**/*assessment*
+**/novelty_matrix*
+AGENTS.md

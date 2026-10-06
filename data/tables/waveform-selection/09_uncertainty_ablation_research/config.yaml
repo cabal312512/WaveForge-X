@@ -1,0 +1,111 @@
+experiment:
+  name: 09_uncertainty_ablation
+  seeds:
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  split: test
+system:
+  modulation: qpsk
+  frame_size: 32
+  cp_length: 8
+  subcarriers: 8
+  sample_rate_hz: 64000
+  c1: null
+  c2: null
+receiver:
+  detector: lmmse
+  solver: auto
+  dense_threshold: 64
+  rtol: 1.0e-08
+  maxiter: null
+dynamic:
+  scenario: mixed_extreme_mobility
+  epochs: 120
+  change_interval: 30
+  max_doppler_hz: 2400
+  snr_db: 12
+  delay_samples: 6
+observation:
+  snr_std: 1
+  doppler_relative_error: 0.12
+  delay_spread_relative_error: 0.12
+  delay_frames: 1
+  reference_bandwidth_hz: 64000
+objective:
+  ber_weight: 1
+  bler_weight: 0.2
+  papr_weight: 0.05
+  complexity_weight: 0.05
+  switching_weight: 0.1
+  papr_reference_db: 12
+  complexity_reference: 1000000
+  switching_matrix:
+  - - 0.0
+    - 1.0
+    - 1.0
+  - - 1.0
+    - 0.0
+    - 1.0
+  - - 1.0
+    - 1.0
+    - 0.0
+selectors:
+- name: uncertainty_aware
+  type: linucb
+  alpha: 0.4
+  window: 24
+  policy: uncertainty
+  base_threshold: 0.01
+  uncertainty_alpha: 0.08
+  max_hold: 15
+  change_detection: &id001
+    threshold: 0.25
+    delta: 0.01
+    feature_index: 2
+    min_instances: 10
+- name: without_uncertainty
+  type: linucb
+  alpha: 0.4
+  window: 24
+  policy: sticky
+  base_threshold: 0.01
+  uncertainty_alpha: 0.08
+  max_hold: 15
+  change_detection: *id001
+- name: without_switching_cost
+  type: linucb
+  alpha: 0.4
+  window: 24
+  policy: uncertainty
+  base_threshold: 0.01
+  uncertainty_alpha: 0.08
+  max_hold: 15
+  change_detection: *id001
+  ignore_switching_cost: true
+- name: without_change_detection
+  type: linucb
+  alpha: 0.4
+  window: 24
+  policy: uncertainty
+  base_threshold: 0.01
+  uncertainty_alpha: 0.08
+  max_hold: 15
+- name: without_sliding_window
+  type: linucb
+  alpha: 0.4
+  policy: uncertainty
+  base_threshold: 0.01
+  uncertainty_alpha: 0.08
+  max_hold: 15
+  change_detection: *id001
+sweep: {}
+cache:
+  enabled: true

@@ -1,0 +1,198 @@
+{
+  "format": "waveforge_x_offline_v1",
+  "feature_count": 5,
+  "feature_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "center": [
+    1.0,
+    0.3345890295176366,
+    0.6308951058243599,
+    0.1680904921758099,
+    0.12738835773135967
+  ],
+  "scale": [
+    1.0,
+    0.11539530196812209,
+    0.4591230793779677,
+    0.11834485919118776,
+    0.08815938194002176
+  ],
+  "coefficients": [
+    [
+      -0.19967770013471783,
+      0.2468173748702035,
+      -0.04713967473548572
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.053920522330710485,
+      0.06936815276475661,
+      -0.01544763043404558
+    ],
+    [
+      0.16111417120943827,
+      -0.055186973257770146,
+      -0.10592719795166822
+    ],
+    [
+      -0.1308765695217804,
+      -0.04363161162481791,
+      0.1745081811465983
+    ],
+    [
+      -0.07627083925903667,
+      0.039060981766240066,
+      0.03720985749279643
+    ]
+  ],
+  "reward_coefficients": [
+    [
+      -0.15047225638014405,
+      -0.12477055699006641,
+      -0.13096537879798897
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.051053846905816186,
+      0.05649856627030005,
+      0.05485850303574206
+    ],
+    [
+      0.005381159756723037,
+      -0.006179511281716857,
+      -0.008184232999742573
+    ],
+    [
+      -0.006522143771669667,
+      -0.008270479847480907,
+      -0.00161941344532636
+    ],
+    [
+      -0.005070640269115663,
+      -0.001016298981992743,
+      -0.0038748061837459227
+    ]
+  ],
+  "training": [
+    {
+      "directory": "results\\20261002T184039205959Z_offline_training_seed101_827665",
+      "scenario": "mixed_extreme_mobility",
+      "seeds": [
+        101
+      ],
+      "configuration_hashes": [
+        "d0dc8b86d03ac8cf6316641b80a08f57d76a7d61b0612153df9508d785f93463"
+      ],
+      "sha256": "52306e52411cf133a315d9a237479d8354f36ef136da9b889dd9429e8a564f29"
+    },
+    {
+      "directory": "results\\20261002T184041045679Z_offline_training_seed102_37af94",
+      "scenario": "mixed_extreme_mobility",
+      "seeds": [
+        102
+      ],
+      "configuration_hashes": [
+        "d0dc8b86d03ac8cf6316641b80a08f57d76a7d61b0612153df9508d785f93463"
+      ],
+      "sha256": "2ab8f1767a5af320dc4b3502bf7f409366721f18345d9c2c910949ea1885c1d4"
+    },
+    {
+      "directory": "results\\20261002T184042785989Z_offline_training_seed103_8fafae",
+      "scenario": "mixed_extreme_mobility",
+      "seeds": [
+        103
+      ],
+      "configuration_hashes": [
+        "d0dc8b86d03ac8cf6316641b80a08f57d76a7d61b0612153df9508d785f93463"
+      ],
+      "sha256": "e4f48838e6155b78077f83d024270b3662d070398ca7a7c9e7418a67ab530ae6"
+    },
+    {
+      "directory": "results\\20261002T184044682589Z_offline_training_seed104_beaa79",
+      "scenario": "mixed_extreme_mobility",
+      "seeds": [
+        104
+      ],
+      "configuration_hashes": [
+        "d0dc8b86d03ac8cf6316641b80a08f57d76a7d61b0612153df9508d785f93463"
+      ],
+      "sha256": "d236379d98b755e6be229c4c10eda0995a4d217cb15ff60357e9f29449d6ecf5"
+    },
+    {
+      "directory": "results\\20261002T184046559851Z_offline_training_seed105_7ec965",
+      "scenario": "mixed_extreme_mobility",
+      "seeds": [
+        105
+      ],
+      "configuration_hashes": [
+        "d0dc8b86d03ac8cf6316641b80a08f57d76a7d61b0612153df9508d785f93463"
+      ],
+      "sha256": "80e6810b804dbfc5359e13cd99216baf8777764254c0254f9abac40af0604946"
+    }
+  ],
+  "training_seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+  ],
+  "domain": {
+    "system": {
+      "frame_size": 32,
+      "cp_length": 8,
+      "subcarriers": 8,
+      "sample_rate_hz": 64000,
+      "modulation": "qpsk",
+      "c1": null,
+      "c2": null
+    },
+    "detector": "lmmse"
+  },
+  "objective": {
+    "ber_weight": 1,
+    "bler_weight": 0.2,
+    "papr_weight": 0.05,
+    "complexity_weight": 0.05,
+    "switching_weight": 0.1,
+    "papr_reference_db": 12,
+    "complexity_reference": 1000000,
+    "switching_matrix": [
+      [
+        0.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        0.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        0.0
+      ]
+    ]
+  },
+  "n_samples": 900,
+  "training_accuracy": 0.4266666666666667,
+  "hyperparameters": {
+    "iterations": 1000,
+    "l2": 0.01,
+    "tuning": "fixed_before_test"
+  }
+}

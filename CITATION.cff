@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "Please cite this software and the exact release used in your experiments."
-title: "WaveForge-X: Decision-aware computation for wireless receivers"
+title: "WaveForge-X: Waveform adaptation, iterative receivers and state reuse"
 type: software
 authors:
   - name: cabal312512
-version: 1.0.0
-date-released: 2026-10-04
+version: 1.1.0
+date-released: 2026-10-06
 license: MIT
 repository-code: "https://github.com/cabal312512/WaveForge-X"
 url: "https://github.com/cabal312512/WaveForge-X"

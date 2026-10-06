@@ -1,0 +1,525 @@
+{
+  "source_hash": "4fbb8c5ac677c0f0233669e7d15834a91338a16021185a271d2ec131770cff33",
+  "policy": {
+    "minimum_scale": 0.25,
+    "failed_envelope_age": 10,
+    "diagonal_age": 1,
+    "diagonal_variation": 0.05
+  },
+  "methods": {
+    "cold_gray": {
+      "kind": "gray",
+      "cold": true,
+      "delta": 0.01,
+      "tolerance": 0.003
+    },
+    "cold_deep": {
+      "kind": "deep",
+      "cold": true,
+      "delta": 0.01,
+      "tolerance": 0.003
+    },
+    "reuse_gray": {
+      "kind": "gray",
+      "cold": false,
+      "delta": 0.01,
+      "tolerance": 0.003
+    },
+    "reuse_deep": {
+      "kind": "deep",
+      "cold": false,
+      "delta": 0.01,
+      "tolerance": 0.003
+    },
+    "reuse_radau": {
+      "kind": "radau",
+      "cold": false,
+      "delta": 0.01,
+      "tolerance": 0.003
+    },
+    "reuse_residual": {
+      "kind": "residual_fast",
+      "cold": false,
+      "delta": 0.01,
+      "tolerance": 0.003
+    },
+    "reset_gray": {
+      "kind": "gray",
+      "cold": false,
+      "delta": 0.01,
+      "tolerance": 0.003,
+      "reset": true
+    },
+    "reset_deep": {
+      "kind": "deep",
+      "cold": false,
+      "delta": 0.01,
+      "tolerance": 0.003,
+      "reset": true
+    }
+  },
+  "conditions": [
+    {
+      "engine": "synthetic",
+      "family": "slow",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 1.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "slow",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 1.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "slow",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 1.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "synthetic",
+      "family": "slow",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 1.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "synthetic",
+      "family": "moderate",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 100.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "moderate",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 100.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "moderate",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 100.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "synthetic",
+      "family": "moderate",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 100.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "synthetic",
+      "family": "high",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 2500.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "high",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 2500.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "high",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 2500.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "synthetic",
+      "family": "high",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 2500.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "synthetic",
+      "family": "abrupt",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 5.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "abrupt",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 5.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "synthetic",
+      "family": "abrupt",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 32,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 5.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "synthetic",
+      "family": "abrupt",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 32,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 5.0,
+      "sample_rate": 64000.0,
+      "payload_symbols": 256
+    },
+    {
+      "engine": "tdl",
+      "family": "slow",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 1.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "slow",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 1.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "slow",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 1.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "tdl",
+      "family": "slow",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 1.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "tdl",
+      "family": "moderate",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 100.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "moderate",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 100.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "moderate",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 100.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "tdl",
+      "family": "moderate",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 100.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "tdl",
+      "family": "high",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 2500.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "high",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 2500.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "high",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 2500.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "tdl",
+      "family": "high",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 2500.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "tdl",
+      "family": "abrupt",
+      "n": 128,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "C",
+      "fd": 5.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "abrupt",
+      "n": 128,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "E",
+      "fd": 5.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 64
+    },
+    {
+      "engine": "tdl",
+      "family": "abrupt",
+      "n": 256,
+      "modulation": "qpsk",
+      "cp": 96,
+      "snr": 28.0,
+      "profile": "A",
+      "fd": 5.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    },
+    {
+      "engine": "tdl",
+      "family": "abrupt",
+      "n": 256,
+      "modulation": "16qam",
+      "cp": 96,
+      "snr": 24.0,
+      "profile": "C",
+      "fd": 5.0,
+      "sample_rate": 7680000.0,
+      "payload_symbols": 128
+    }
+  ],
+  "confirmation_seedbase": 1080000,
+  "repeats": 3,
+  "frames": 100,
+  "checkpoints": [
+    10,
+    50,
+    100
+  ],
+  "primary_delta": 0.01,
+  "secondary_deltas": [
+    0.0,
+    0.05
+  ],
+  "quality_targets": {
+    "mean": 0.0005,
+    "p90": 0.002,
+    "equivalence_mean_margin": 0.00025,
+    "equivalence_p90_margin": 0.001
+  },
+  "primary": "paired independent episode total work, warm Deep vs cold Gray and warm Radau/residual, primary delta .01",
+  "cluster": "engine/family/N/modulation/channel seed; all waveforms and frames correlated",
+  "bootstrap_repetitions": 5000,
+  "physical_model": "TDL 65-tap DC-normalized, 2x common oversampling with N/2 payload, cp96; complete physical operator",
+  "preconditioner": "all primary methods fresh exact Jacobi every frame; separate ablation uses shared age20 lagged SPD policy",
+  "no_payload_warm_start": true,
+  "no_test_retuning": true,
+  "floating_point_certified": false,
+  "initial_development_excluded": "Oversampled OFDM weighted Gray costs initially used native rather than symbol-order weights; corrected before fresh development and protocol freeze. Initial evidence retained, not used for selection.",
+  "residual_selection": {
+    "method": "residual_0.003",
+    "tolerance": 0.003,
+    "mean": 0.0003641764322916667,
+    "p90": 0.0008789062499999999,
+    "work": 122254350.55819927,
+    "qualified": true
+  },
+  "validation_candidates": [
+    {
+      "method": "reuse_residual",
+      "tolerance": 0.001,
+      "mean": 0.0001220703125,
+      "p90": 0.00029296875,
+      "work": 134880830.5581993,
+      "qualified": true
+    },
+    {
+      "method": "residual_0.01",
+      "tolerance": 0.01,
+      "mean": 0.001129150390625,
+      "p90": 0.0035807291666666665,
+      "work": 109179194.55819926,
+      "qualified": false
+    },
+    {
+      "method": "residual_0.003",
+      "tolerance": 0.003,
+      "mean": 0.0003641764322916667,
+      "p90": 0.0008789062499999999,
+      "work": 122254350.55819927,
+      "qualified": true
+    },
+    {
+      "method": "residual_0.0003",
+      "tolerance": 0.0003,
+      "mean": 5.086263020833333e-05,
+      "p90": 0.00016276041666666668,
+      "work": 149342935.0581993,
+      "qualified": true
+    },
+    {
+      "method": "residual_0.0001",
+      "tolerance": 0.0001,
+      "mean": 1.0172526041666666e-05,
+      "p90": 0.0,
+      "work": 162872203.0581993,
+      "qualified": true
+    }
+  ]
+}

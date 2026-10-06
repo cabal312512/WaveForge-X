@@ -1,0 +1,14 @@
+{
+  "kernels": {
+    "certiphy_deep.py": "7f3f090de35c04d132f3448bf73155384966e247ee989d66020a47fe479fe84a",
+    "certiphy_selective.py": "d65f56f270345203a3b25c5e3daf811376e4d738d3ee9571a042f67f02197fbb"
+  },
+  "functions": {
+    "bit_margins": "0ef46b7901d8eb06fc3ff2bec98d58d7eb7fae9332330364ddf9bca2d85ed9f6",
+    "gray_energy_bound": "67742b6c16c4e85187f24074ad6e80524eca42795e40eb579a00f50c32d2dbee",
+    "targeted_gray_bound": "02519a55c23e71adaa4385c5556e6c9e471a94566771755acf2032e8a1195df5",
+    "physical_spectral_bounds": "503345c42e48e66ff5119afc8cb32652be3a100e4b63509f2131ca4765a7adf8",
+    "normal": "d1253f9e0eb5502161fa71920abf2323282b33fa89eb368c7e9a16e2aa7a2d17",
+    "_dual": "a22ef1502b25a21d6559480e4ebabddfb8e75efc5469762ebc8ad3e5febdf570"
+  }
+}

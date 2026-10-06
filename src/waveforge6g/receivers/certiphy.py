@@ -209,7 +209,8 @@ class CertiPHY:
         defect = np.linalg.norm(f-self.normal(q))
         return q, float(defect), count
 
-    def solve(self, received, rule=None, max_work=np.inf, keep_trace=False, refiner=None):
+    def solve(self, received, rule=None, max_work=np.inf, keep_trace=False, refiner=None,
+              payload_indices=None, output_bit_mask=None, preparer=None):
         rule = StopRule() if rule is None else rule
         if rule.method not in ("fixed", "residual", "residual_fast", "stable", "stable_fast", "global", "krylov", "dual", "radau", "packing", "gray"):
             raise ValueError("unknown stopping method")
@@ -220,14 +221,24 @@ class CertiPHY:
         if y.shape != (self.n,) or not np.all(np.isfinite(y)):
             raise ValueError("finite useful received vector required")
         started, cpu_started = time.perf_counter(), time.process_time()
+        from .payload_selection import PayloadSelection
+        selection = PayloadSelection(self.n, self.width, payload_indices, output_bit_mask)
+        selected_mask, bit_count = selection.mask, selection.count
+        live_symbols = len(selection.symbols)
+        decode_work = 4*live_symbols*self.width
+        decision_work = live_symbols*self.width
+        self.output_selection = selection
         ledger = WorkLedger(max_work)
         # Reserve the final output, so budget exhaustion cannot hide a free FFT.
-        initial = self.setup_work+8*self.nnz+12*self.n+2*self.transform+8*self.n*2**self.width+self.decode_work
+        initial = self.setup_work+8*self.nnz+12*self.n+2*self.transform+8*live_symbols*2**self.width+decode_work+4*self.n*self.width
         if not ledger.fits(initial):
             raise ValueError("budget cannot cover mandatory preparation and output")
         ledger.add("preparation", self.setup_work)
         ledger.add("rhs", 8*self.nnz+12*self.n)
-        ledger.add("transmit_and_output", 2*self.transform+8*self.n*2**self.width+self.decode_work)
+        ledger.add("transmit_and_output", 2*self.transform+8*live_symbols*2**self.width+decode_work)
+        ledger.add("output_selection", 4*self.n*self.width)
+        if preparer is not None:
+            preparer.prepare(self, ledger)
         if refiner is not None:
             if rule.method != "gray":
                 raise ValueError("refinement requires the Gray stopping rule")
@@ -239,13 +250,14 @@ class CertiPHY:
         norm_b = np.linalg.norm(b)
         radau = 1/self.mu
         leverage = np.zeros(self.n)
-        certificate = np.zeros((self.n, self.width), bool)
+        # Outside-mask True is bookkeeping only; it is never exposed as certified.
+        certificate = ~selected_mask.copy()
         frozen_bits = np.zeros_like(certificate, np.uint8)
         previous_bits, stable = None, 0
         duals, trace = {}, []
-        target = int(np.floor(rule.delta*self.n*self.width))
+        target = int(np.floor(rule.delta*bit_count))
         next_check, previous_radius, previous_iteration = rule.period, None, 0
-        count, checks, restarts, bound = 0, 0, 0, self.n*self.width
+        count, checks, restarts, bound = 0, 0, 0, bit_count
         status = "iteration_cap"
         check_seconds = 0.
         certified_mode = rule.method in ("global", "krylov", "dual", "radau", "packing", "gray")
@@ -292,13 +304,13 @@ class CertiPHY:
                 due = np.linalg.norm(r) <= rule.tolerance*max(norm_b, 1e-300) or k == rule.max_iterations
             if not due:
                 continue
-            check_work = self.normal_work+24*self.n+self.transform+self.decode_work
+            check_work = self.normal_work+24*self.n+self.transform+decode_work
             if rule.method == "stable_fast":
-                check_work = 12*self.n+self.transform+self.decode_work+4*self.n*self.width
+                check_work = 12*self.n+self.transform+decode_work+4*bit_count
             if certified_mode:
-                check_work += 12*self.n*self.width*max(1, 2**(self.width//2)-1)
+                check_work += 12*decision_work*max(1, 2**(self.width//2)-1)
                 if rule.schedule == "adaptive":
-                    check_work += 8*self.n*self.width+40
+                    check_work += 8*bit_count+40
             if not ledger.fits(check_work):
                 status = "work_cap"
                 break
@@ -365,16 +377,17 @@ class CertiPHY:
                             certificate[j] |= fresh
                 bound = int((~certificate).sum())
                 if rule.method == "packing" and target > 0 and bound > target:
-                    packing_work = 20*self.n*self.width*max(1, 2**(self.width//2))+12*self.n*self.width*np.ceil(np.log2(self.n*self.width))
+                    packing_work = 20*decision_work*max(1, 2**(self.width//2))+12*decision_work*np.ceil(np.log2(bit_count))
                     if ledger.fits(packing_work):
                         ledger.add("gray_energy_packing", packing_work)
                         bound = min(bound, gray_energy_bound(symbols, self.modulation, radius, ~certificate, target))
                 if rule.method == "gray" and target > 0 and bound > target:
-                    gate_work = 10*self.n*self.width
-                    dual_work = self.n*(12*2**(self.width//2)+30*(self.width//2+1)+8*self.width) if self.width > 2 else 0
+                    gate_work = 10*decision_work
+                    dual_work = live_symbols*(12*2**(self.width//2)+30*(self.width//2+1)+8*self.width) if self.width > 2 else 0
                     if ledger.fits(gate_work+dual_work):
                         ledger.add("gray_target_gate", gate_work)
-                        upper, used_dual = targeted_gray_bound(symbols, self.modulation, radius, ~certificate, target, margins)
+                        idx = selection.symbols
+                        upper, used_dual = targeted_gray_bound(symbols[idx], self.modulation, radius, (~certificate)[idx], target, margins[idx])
                         if used_dual:
                             ledger.add("gray_region_dual", dual_work)
                         bound = min(bound, upper)
@@ -386,13 +399,13 @@ class CertiPHY:
             output[certificate] = frozen_bits[certificate]
             check_seconds += time.perf_counter()-check_started
             if keep_trace:
-                trace.append(dict(iteration=count, work=ledger.total, coverage=float(certificate.mean()),
-                                  disagreement_bound=bound/(self.n*self.width), residual=float(residual),
-                                  radius=float(radius), recursive_drift=float(drift), output=output.ravel().copy(),
+                trace.append(dict(iteration=count, work=ledger.total, coverage=float(certificate[selected_mask].mean()),
+                                  disagreement_bound=bound/bit_count, residual=float(residual),
+                                  radius=float(radius), recursive_drift=float(drift), output=output[selected_mask].copy(),
                                   energy_bound=float(energy) if certified_mode else None,
                                   refined_radius_max=float(np.max(radii)) if certified_mode else None,
                                   refined_energy=None if refiner is None else refiner.current_eta,
-                                  soft=symbols.copy(), certificate=certificate.ravel().copy()))
+                                  soft=symbols.copy(), certificate=(certificate & selected_mask).ravel().copy()))
             if stop:
                 status = "certified_exact_arithmetic" if certified_mode else "heuristic_stop"
                 break
@@ -415,16 +428,18 @@ class CertiPHY:
             previous_radius, previous_iteration = radius, count
             next_check = k+gap
         symbols = self.wave.analysis(x)
-        output = demodulate(symbols, self.modulation).reshape(self.n, self.width)
+        output = np.zeros((self.n, self.width), np.uint8)
+        output[selection.symbols] = demodulate(symbols[selection.symbols], self.modulation).reshape(live_symbols, self.width)
         output[certificate] = frozen_bits[certificate]
         # A packing bound applies to the checked iterate only. If work/iteration
         # exhaustion occurs after that check, only the sticky individual bits
         # retain their guarantee for the new current output.
         if not status.startswith("certified"):
             bound = int((~certificate).sum())
-        return {"bits": output.ravel(), "soft": symbols, "time_estimate": x,
-                "certified": certificate.ravel(), "unknown_fraction": float((~certificate).mean()),
-                "disagreement_bound": bound/(self.n*self.width), "status": status,
+        return {"bits": output[selected_mask], "soft": symbols, "time_estimate": x,
+                "output_bit_mask": selected_mask.ravel(), "payload_bit_count": bit_count,
+                "certified": (certificate & selected_mask)[selected_mask], "unknown_fraction": float((~certificate).sum()/bit_count),
+                "disagreement_bound": bound/bit_count, "status": status,
                 "met_requested_bound": bool(certified_mode and bound <= target),
                 "floating_point_certified": False, "iterations": count, "checks": checks,
                 "restarts": restarts, "work": ledger.total, "work_parts": ledger.parts,

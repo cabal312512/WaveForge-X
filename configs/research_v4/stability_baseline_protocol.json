@@ -1,0 +1,45 @@
+{
+  "source_hash": "d6053c582d303159a2aa220c391ab23e5253a1da3f1d0b3b77f6e20d970dea21",
+  "rules": {
+    "stable_d0": {
+      "method": "stable_fast",
+      "delta": 0.0,
+      "max_iterations": 256,
+      "period": 2,
+      "schedule": "periodic",
+      "tolerance": 0.0001,
+      "fixed_iterations": 16,
+      "stable_checks": 12,
+      "dual_iterations": 12,
+      "dual_targets": 2
+    },
+    "stable_d001": {
+      "method": "stable_fast",
+      "delta": 0.01,
+      "max_iterations": 256,
+      "period": 1,
+      "schedule": "periodic",
+      "tolerance": 0.0001,
+      "fixed_iterations": 16,
+      "stable_checks": 2,
+      "dual_iterations": 12,
+      "dual_targets": 2
+    },
+    "stable_d005": {
+      "method": "stable_fast",
+      "delta": 0.05,
+      "max_iterations": 256,
+      "period": 1,
+      "schedule": "periodic",
+      "tolerance": 0.0001,
+      "fixed_iterations": 16,
+      "stable_checks": 2,
+      "dual_iterations": 12,
+      "dual_targets": 2
+    }
+  },
+  "calibration_sha256": "feb965255e8bda656afe4b9e31d69653a8e16b84b53cf7a025cebfd9ea6cbd32",
+  "reason": "Hard-decision stability needs transform and decisions, not a full residual matvec at every check.",
+  "no_certiphy_retuning": true,
+  "reuse_original_received_samples": true
+}

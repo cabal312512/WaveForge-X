@@ -1,0 +1,7 @@
+metric,contrast,mean,low95,high95,interpretation
+ber,cadc-sticky,-0.0006559244791666662,-0.0013803201109951154,6.847115266178313e-05,secondary exploratory paired trajectory interval
+ber,cadc-always_otfs,0.0005403645833333322,-0.00013465977443495407,0.0012153889411016185,secondary exploratory paired trajectory interval
+bler,cadc-sticky,-0.011875000000000009,-0.02069646331667565,-0.0030535366833243666,secondary exploratory paired trajectory interval
+bler,cadc-always_otfs,0.010208333333333333,0.00024133018497362116,0.020175336481693045,secondary exploratory paired trajectory interval
+switches,cadc-sticky,-25.5125,-27.969757868877704,-23.055242131122295,secondary exploratory paired trajectory interval
+switches,cadc-always_otfs,2.1,2.024057184693992,2.175942815306008,secondary exploratory paired trajectory interval

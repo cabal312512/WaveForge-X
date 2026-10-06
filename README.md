@@ -1,59 +1,63 @@
 <p align="center"><img src="docs/assets/wordmark.svg" width="560" alt="WaveForge-X"></p>
 
-<p align="center">Decision-aware computation for wireless receivers</p>
-<p align="center"><a href="docs/research.md">Research results</a> · <a href="docs/methods.md">Methods</a> · <a href="docs/reproduce.md">Reproduce</a> · <a href="https://github.com/cabal312512/WaveForge-X/releases/latest">Release & data</a> · <a href="README.zh-CN.md">中文</a></p>
+<p align="center">Waveform adaptation, iterative receivers and reusable computation</p>
+<p align="center"><a href="docs/experiment-record.md">Experiment record</a> · <a href="docs/methods.md">Receiver methods</a> · <a href="docs/reproduce.md">Reproduce</a> · <a href="https://github.com/cabal312512/WaveForge-X/releases/latest">Release & data</a> · <a href="README.zh-CN.md">中文</a></p>
 
-WaveForge-X studies how much computation a wireless receiver needs **before its
-final bit decisions are sufficiently determined**. Its CertiPHY receiver combines
-time-domain PCG, posterior error bounds and Gray-QAM decision geometry to bound
-disagreement with a specified full LMMSE hard-decision reference.
+WaveForge-X is a CPU research platform for OFDM, OTFS and AFDM. It brings together
+nonstationary waveform selection, finite receiver budgets, decision-aware PCG
+stopping and reusable sparse time-domain preparation. NumPy/SciPy implementations,
+frozen settings and saved experimental outcomes make the comparisons inspectable.
 
-The implementation covers OFDM, OTFS and AFDM, complete CP/CPP channel operators,
-QPSK/16/64-QAM, structured spectral refinement and a cost-aware refinement gate.
-It runs on CPU with NumPy and SciPy. No neural network, hardware or external
-measurement dataset is required.
+## Research record
 
-## What the experiments show
+| Topic | What the evidence establishes | Record |
+|---|---|---|
+| Waveform adaptation | Less switching can help; the tested controller does not beat the best fixed waveform. Corrected six-order probing matches Explore-Then-Commit. | [Adaptation](docs/adaptation.md) |
+| Compute budgets | Receiver iterations create BER-cost tradeoffs. The tested joint selector is worse than a validation-selected fixed configuration at 2.49× work. | [Receiver budgets](docs/receiver-budget.md) |
+| Anytime reception | Valid error sets constrain disagreement with a specified LMMSE hard-decision reference. Preparation can outweigh iteration savings. | [Receiver study](docs/research.md) |
+| Reuse and changing CSI | Legal static reuse saves preparation. Against strong cached baselines, further phase/refinement work does not show a general end-to-end advantage. | [State reuse](docs/reuse.md) |
 
-The frozen confirmation study uses **48 independent channel clusters, 288 received
-frames and 12 TDL-A/C/E profile-based conditions**. All methods use the same received
-data and model; preparation, transforms, checks and iterations are charged.
+These are distinct experiments, including negative results. Comparisons retain
+their channel assumptions, statistical units and cost conventions rather than
+pooling everything into one claimed speedup.
 
-| Finding | Result |
-|---|---|
-| Selective refinement vs Gray, disagreement budget 0.01 | **0.47% less modeled work**; paired 95% cluster interval for the cost ratio: **[0.98943, 0.99922]** |
-| Full refinement vs Gray | **20.7% fewer iterations**, but **2.42% more total work** |
-| Empirically quality-matched residual stopping | Selective refinement costs **4.58% more** at the tight target |
-| End-to-end timing | No CPU improvement at the primary 0.01 budget |
-| Scope of the gain | Concentrated in one four-cluster, low-Doppler TDL-C condition |
+<img src="docs/figures/receiver-budget/pareto.png" width="820" alt="BER and complete modeled computational cost">
 
-<img src="docs/figures/ablation_cost.png" width="900" alt="Preparation cost offsets savings in PCG iterations">
+## Implemented scope
 
-These are research results, including negative findings—not a claim of a universally
-faster receiver. Bounds target the **receiver's same-model LMMSE decisions**, not
-transmitted truth or ML/MAP optimality. Proofs assume exact arithmetic;
-`floating_point_certified` remains `False`. The finite-FIR channel is
-**TR 38.901 profile-based**, not a full conformance implementation.
+- Gray BPSK/QPSK/16/64-QAM; unitary OFDM, reduced-prefix rectangular OTFS and
+  chirp-prefix AFDM with complete useful-time CP/CPP channel operators.
+- AWGN/fading, synthetic nonstationary multipath and finite-FIR TR 38.901
+  profile-based TDL. The latter is not a full standard-conformance claim.
+- Dense LMMSE references, sparse time-domain PCG, symbol-domain sparsification,
+  posterior decision checks, structured refinement and checked reuse/fallback.
+- Paired Monte Carlo, noisy selected-action feedback, independent reevaluation,
+  uncertainty/switching controls, cost decomposition and episode-cluster analysis.
+
+Certificates concern the supplied model's reference hard decisions, not zero BER,
+ML/MAP optimality or reliability on an unknown physical channel.
+`floating_point_certified` remains **False**. Modeled work and measured CPU time
+are reported separately. No hardware, CUDA or deep-learning framework is needed.
 
 ## Repository
 
 | Location | Contents |
 |---|---|
-| `src/waveforge6g/` | Waveforms, exact sparse channel operators, PCG and certificate methods |
-| `scripts/` | Frozen study, numerical diagnostics, figure generation and evidence verification |
-| `configs/` | Official profile values and predeclared statistical analysis |
-| `data/tables/` | Compact numerical results, selection records and protocols |
-| `data/*.zip` | Received data, output bits, references, manifests and supporting development evidence |
-| `docs/` | Consolidated English research record, mathematics, reproduction and prior-art assessment |
-| `tests/` | Decision boundaries, error bounds, Gray-region enumeration, waveform and channel checks |
+| `src/waveforge6g/` | Physical layer, policy experiments, iterative receivers and reuse |
+| `configs/` | Channel values, scenario grids and frozen method/analysis parameters |
+| `scripts/` | Fresh study runners, diagnostics, artifact checks and figure regeneration |
+| `data/tables/` | Seed/trajectory/episode summaries, paired results and ablations |
+| `data/*.zip` | Checksummed synthetic evidence, including recorded failures |
+| `docs/` | Consolidated English methods, experiments, limitations and reproduction |
+| `tests/` | Channel/transform, policy, solver, decision-boundary and reuse checks |
 
-The public package is `waveforge-x`; the Python import name remains `waveforge6g`
-to preserve numerical code compatibility. Internal phase identifiers survive only
-where needed to trace frozen evidence. They are not separate public editions.
+Internal phase identifiers appear where required to trace original evidence.
+The public project remains one integrated edition. [Experiment record](docs/experiment-record.md)
+explains which raw arrays are complete and which are representative prefixes.
 
 ## Run
 
-Python 3.11 or 3.12. From a clone on Linux/macOS:
+Python 3.11 or 3.12. In Bash:
 
 ```bash
 source scripts/env.sh
@@ -65,15 +69,23 @@ python -m venv .venv
 .venv/bin/python scripts/make_figures.py
 ```
 
-On Windows, use `. ./scripts/env.ps1` and `.venv/Scripts/python.exe`.
-The environment scripts keep dependencies, caches and generated outputs inside
-the checkout. Figure regeneration reads saved evidence and does not repeat PHY
-experiments. Fresh experiments and exact provenance are documented in
-[Reproduction](docs/reproduce.md).
+On Windows use `. ./scripts/env.ps1` and `.venv/Scripts/python.exe`.
+The import and CLI name `waveforge6g` is retained for numerical compatibility;
+the public package is `waveforge-x`.
+
+```bash
+.venv/bin/python -m waveforge6g run configs/smoke.yaml
+.venv/bin/python -m waveforge6g research configs/research/smoke.yaml
+```
+
+Environments, dependencies, caches and generated outputs stay in the checkout.
+Reading evidence and regenerating figures does not repeat the PHY experiments.
+See [reproduction](docs/reproduce.md) for expensive fresh studies.
 
 ## License and attribution
 
 Copyright © 2026 **cabal312512**. Code, original artwork and synthetic experiment
-artifacts are provided under the [MIT License](LICENSE). Third-party papers and
-standards are cited, not redistributed. See [source attribution](docs/related-work.md)
-and [CITATION.cff](CITATION.cff).
+artifacts are under the [MIT License](LICENSE). Third-party papers/standards are
+cited rather than redistributed. Cite the software version using [CITATION.cff](CITATION.cff).
+AI assistance contributed to implementation, diagnostics and technical documentation;
+the published numerical evidence records actual executed experiments.

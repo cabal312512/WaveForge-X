@@ -1,1 +1,1 @@
-"""Independent evaluator helpers; never available to stopping decisions."""
+"""Paired Monte Carlo experiments and artifact serialization."""

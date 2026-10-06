@@ -1,0 +1,45 @@
+experiment:
+  name: oracle_regions
+  seed: 707
+  kind: ber
+system:
+  frame_size: 32
+  cp_length: 8
+  subcarriers: 8
+  sample_rate_hz: 64000
+  modulation: qpsk
+channel:
+  model: doubly_selective
+  paths:
+  - delay_samples: 0
+    power_db: 0
+    doppler_hz: 1
+  - delay_samples: 3
+    power_db: -3
+    doppler_hz: -0.53
+  - delay_samples: 6
+    power_db: -7
+    doppler_hz: 0.27
+receiver:
+  detectors:
+  - lmmse
+  dense_threshold: 64
+monte_carlo:
+  max_frames: 80
+  min_frames: 10
+  min_bit_errors: 0
+  progress: false
+sweep:
+  snr_db:
+  - 0
+  - 4
+  - 8
+  - 12
+  - 16
+  - 20
+  max_doppler_hz:
+  - 0
+  - 200
+  - 600
+  - 1200
+  - 2400

@@ -1,0 +1,36 @@
+experiment:
+  name: awgn_comparison
+  seed: 42
+  kind: ber
+system:
+  waveforms:
+  - ofdm
+  - otfs
+  - afdm
+  modulation: qpsk
+  frame_size: 64
+  cp_length: 8
+  subcarriers: 8
+  sample_rate_hz: 64000
+channel:
+  model: awgn
+receiver:
+  detectors:
+  - lmmse
+  solver: auto
+  dense_threshold: 64
+monte_carlo:
+  max_frames: 100
+  min_frames: 20
+  min_bit_errors: 200
+  progress: false
+sweep:
+  snr_db:
+  - 0
+  - 4
+  - 8
+  - 12
+  - 16
+plotting:
+  enabled: true
+  papr_oversampling: 4

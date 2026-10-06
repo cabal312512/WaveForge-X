@@ -1,0 +1,96 @@
+experiment:
+  name: 08_bandit_comparison
+  seeds:
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  split: test
+system:
+  modulation: qpsk
+  frame_size: 32
+  cp_length: 8
+  subcarriers: 8
+  sample_rate_hz: 64000
+  c1: null
+  c2: null
+receiver:
+  detector: lmmse
+  solver: auto
+  dense_threshold: 64
+  rtol: 1.0e-08
+  maxiter: null
+dynamic:
+  scenario: mixed_extreme_mobility
+  epochs: 120
+  change_interval: 30
+  max_doppler_hz: 2400
+  snr_db: 12
+  delay_samples: 6
+observation:
+  snr_std: 1
+  doppler_relative_error: 0.12
+  delay_spread_relative_error: 0.12
+  delay_frames: 1
+  reference_bandwidth_hz: 64000
+objective:
+  ber_weight: 1
+  bler_weight: 0.2
+  papr_weight: 0.05
+  complexity_weight: 0.05
+  switching_weight: 0.1
+  papr_reference_db: 12
+  complexity_reference: 1000000
+  switching_matrix:
+  - - 0.0
+    - 1.0
+    - 1.0
+  - - 1.0
+    - 0.0
+    - 1.0
+  - - 1.0
+    - 1.0
+    - 0.0
+selectors:
+- name: ucb
+  type: ucb
+  alpha: 0.5
+- name: sliding_window_ucb
+  type: sliding_window_ucb
+  window: 24
+  alpha: 0.5
+- name: discounted_ucb
+  type: discounted_ucb
+  discount: 0.96
+  alpha: 0.5
+- name: thompson
+  type: thompson
+- name: linucb
+  type: linucb
+  alpha: 0.4
+- name: sliding_window_linucb
+  type: linucb
+  alpha: 0.4
+  window: 24
+- name: uncertainty_aware
+  type: linucb
+  alpha: 0.4
+  window: 24
+  policy: uncertainty
+  base_threshold: 0.01
+  uncertainty_alpha: 0.08
+  max_hold: 15
+  change_detection:
+    threshold: 0.25
+    delta: 0.01
+    feature_index: 2
+    min_instances: 10
+sweep: {}
+cache:
+  enabled: true

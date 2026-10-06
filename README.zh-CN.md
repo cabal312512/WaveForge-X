@@ -1,13 +1,21 @@
 # WaveForge-X
 
-[English](README.md) · [研究结果](docs/research.md) · [复现](docs/reproduce.md) · [Release](https://github.com/cabal312512/WaveForge-X/releases/latest)
+OFDM、OTFS、AFDM 的纯 CPU 通信研究平台，整合波形自适应、有限计算预算、
+迭代接收机与可验证状态复用。代码、实验设置、实际结果和负结果保留在同一个公开版本中。
 
-研究有限计算预算下的通信接收机：利用求解误差与 Gray 判决区域，判断当前比特输出与指定完整 LMMSE 参考之间最多还能有多少分歧。
+| 主题 | 主要观察 | 详细记录（英文） |
+|---|---|---|
+| 波形自适应 | 减少切换有作用，但未超过最佳固定方案；修正探测顺序后未超过简单探测后固定 | [Adaptation](docs/adaptation.md) |
+| 接收机预算 | 存在真实 BER—成本取舍；联合选择器未胜出，成本为固定配置的 2.49 倍 | [Receiver budgets](docs/receiver-budget.md) |
+| 判决感知接收 | 有效误差集合限制相对指定 LMMSE 参考的位分歧；准备成本可能抵消迭代收益 | [Receiver study](docs/research.md) |
+| 状态复用 | 合法复用可减少准备；新增相位/细化策略未普遍超过强缓存基线 | [State reuse](docs/reuse.md) |
 
-本仓库整合为一个公开版本，包含可运行算法、英文方法推导、开发/验证/确认协议、原始接收数据与输出位串、5 张核心图和必要测试。旧阶段名称只保留在证据溯源中；工具、环境、缓存、下载论文和无关探索不上传。
+[完整实验记录](docs/experiment-record.md)说明统计单位、开发/确认划分、原始数据覆盖范围和局限。
+运算量模型不等于 CPU 周期，Python 实测时间不等于硬件时延。判决一致性不是零 BER；
+`floating_point_certified=False`。TDL 是有限 FIR 的标准 profile-based 模型，未宣称完整符合标准。
 
-48 个独立信道簇、288 帧的确认结果：主要差异预算为 .01 时，选择性精化比 Gray 少用 0.47% 模型运算量，CPU 未改善；完整精化虽然减少迭代，总成本增加 2.42%。通过预设经验质量匹配的残差法更便宜。这些负结果和标准信道近似误差均保留，没有包装成普遍优势。
+使用 Python 3.11/3.12 和 NumPy/SciPy，不需要硬件、CUDA 或深度学习框架。
+环境、依赖和缓存留在项目内。运行命令见 [英文首页](README.md)与[复现说明](docs/reproduce.md)。
 
-理论保证针对同模型 LMMSE 的硬判决，不是零 BER；浮点链路尚未完成严格认证。当前证据还不足以宣称论文级新颖性和稳健性能优势。
-
-作者 **cabal312512**，MIT License。运行命令见英文首页；Windows 使用项目内 `.venv/Scripts/python.exe`。
+MIT License；版权所有 cabal312512。人工智能参与代码、诊断及技术文档制作，
+结果来自实际运行记录；失败情况与无收益结论同样保留。

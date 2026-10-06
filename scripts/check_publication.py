@@ -23,5 +23,11 @@ for seed in [920000,920500]:
         result=rx.solve(raw['received'],rule,max_work=rx.setup_work+300*rx.step_work+30e6*rx.n/1024,refiner=refiner)
         index=list(raw['methods']).index('selective:0.01')
         np.testing.assert_array_equal(result['bits'],raw['outputs'][index])
-        assert result['work']==row['work'] and result['iterations']==row['iterations']
-        print(key,'identical output, work and iteration count')
+        # The integrated receiver now constructs and charges an explicit return
+        # selection even for full payloads. Preserve the historical work record;
+        # explain this fixed setup increment instead of silently rewriting it.
+        selection_work = 4*rx.n*rx.width
+        assert result['work_parts']['output_selection'] == selection_work
+        assert result['work'] == row['work'] + selection_work
+        assert result['iterations'] == row['iterations']
+        print(key,'identical output and iterations; work differs only by charged output selection',selection_work)

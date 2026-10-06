@@ -1,0 +1,34 @@
+experiment:
+  name: smoke
+  seed: 42
+  kind: ber
+system:
+  waveforms:
+  - ofdm
+  - otfs
+  - afdm
+  modulation: qpsk
+  frame_size: 16
+  cp_length: 4
+  subcarriers: 4
+  sample_rate_hz: 64000
+channel:
+  model: awgn
+  snr_db: 8
+receiver:
+  detectors:
+  - lmmse
+  solver: auto
+  dense_threshold: 64
+monte_carlo:
+  max_frames: 8
+  min_frames: 8
+  min_bit_errors: 0
+  progress: false
+sweep:
+  snr_db:
+  - 0
+  - 8
+plotting:
+  enabled: true
+  papr_oversampling: 4

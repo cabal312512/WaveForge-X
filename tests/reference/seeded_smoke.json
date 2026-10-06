@@ -1,0 +1,109 @@
+{
+  "description": "Actual deterministic AWGN counts, not research performance evidence.",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "configuration": {
+    "experiment": {
+      "name": "seeded_regression",
+      "seed": 314159
+    },
+    "system": {
+      "frame_size": 16,
+      "cp_length": 4,
+      "subcarriers": 4
+    },
+    "channel": {
+      "model": "awgn"
+    },
+    "receiver": {
+      "detectors": [
+        "lmmse"
+      ],
+      "solver": "dense"
+    },
+    "monte_carlo": {
+      "max_frames": 12,
+      "min_frames": 12,
+      "min_bit_errors": 0,
+      "progress": false
+    },
+    "sweep": {
+      "snr_db": [
+        0,
+        6
+      ]
+    },
+    "plotting": {
+      "enabled": false,
+      "papr_oversampling": 2
+    }
+  },
+  "compared_columns": [
+    "waveform",
+    "snr_db",
+    "n_frames",
+    "n_bits",
+    "bit_errors",
+    "symbol_errors",
+    "block_errors"
+  ],
+  "expected": [
+    {
+      "waveform": "afdm",
+      "snr_db": 0,
+      "n_frames": 12,
+      "n_bits": 384,
+      "bit_errors": 71,
+      "symbol_errors": 66,
+      "block_errors": 12
+    },
+    {
+      "waveform": "ofdm",
+      "snr_db": 0,
+      "n_frames": 12,
+      "n_bits": 384,
+      "bit_errors": 66,
+      "symbol_errors": 58,
+      "block_errors": 12
+    },
+    {
+      "waveform": "otfs",
+      "snr_db": 0,
+      "n_frames": 12,
+      "n_bits": 384,
+      "bit_errors": 64,
+      "symbol_errors": 58,
+      "block_errors": 12
+    },
+    {
+      "waveform": "afdm",
+      "snr_db": 6,
+      "n_frames": 12,
+      "n_bits": 384,
+      "bit_errors": 9,
+      "symbol_errors": 9,
+      "block_errors": 9
+    },
+    {
+      "waveform": "ofdm",
+      "snr_db": 6,
+      "n_frames": 12,
+      "n_bits": 384,
+      "bit_errors": 7,
+      "symbol_errors": 7,
+      "block_errors": 5
+    },
+    {
+      "waveform": "otfs",
+      "snr_db": 6,
+      "n_frames": 12,
+      "n_bits": 384,
+      "bit_errors": 10,
+      "symbol_errors": 10,
+      "block_errors": 8
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import urllib.request,urllib.error,urllib.parse
 
 ROOT=Path(__file__).resolve().parents[1]
 REPO='cabal312512/WaveForge-X'
-TAG='v1.0.0'
+TAG='v1.1.0'
 token=os.environ['GH_TOKEN']
 
 
@@ -25,10 +25,10 @@ try:
         print('Published release already exists; leaving it unchanged.');raise SystemExit(0)
 except urllib.error.HTTPError as e:
     if e.code!=404:raise
-    release=request(api+'/releases','POST',dict(tag_name=TAG,target_commitish=os.environ['GITHUB_SHA'],name='WaveForge-X 1.0.0 — CertiPHY research snapshot',body=(ROOT/'RELEASE.md').read_text(encoding='utf-8'),draft=True,prerelease=False))
+    release=request(api+'/releases','POST',dict(tag_name=TAG,target_commitish=os.environ['GITHUB_SHA'],name='WaveForge-X 1.1.0 — integrated experimental research',body=(ROOT/'RELEASE.md').read_text(encoding='utf-8'),draft=True,prerelease=False))
 
 upload=release['upload_url'].split('{')[0]
-for name in ['certiphy-evidence.zip','method-development.zip','SHA256SUMS']:
+for name in ['certiphy-evidence.zip','method-development.zip','reuse-evidence.zip','SHA256SUMS']:
     data=(ROOT/'data'/name).read_bytes()
     existing=next((a for a in release['assets'] if a['name']==name),None)
     if existing:

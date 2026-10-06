@@ -1,0 +1,26 @@
+{
+  "note": "Descriptive metadata of the frozen generators; no experimental parameter is changed. Raw CSV fd is the generic TDL case label and is not the synthetic generator's Doppler value. Synthetic profile labels are unused.",
+  "synthetic": {
+    "sample_rate_hz": 64000,
+    "doppler_cap_hz": {"slow": 0.2, "moderate": 40.0, "high": 1600.0, "abrupt": 1.0},
+    "per_path_frequency": "seeded uniform(-cap,cap), four paths; birth path frequency 0.7 Hz",
+    "path_delays_samples": [0, 2, 5, 9],
+    "abrupt_events": {"35": "path1 amplitude set to zero", "55": "birth at delay7 with amplitude0.65 exp(0.2j)", "80": "birth path removed"}
+  },
+  "tdl": {
+    "sample_rate_hz": 7680000,
+    "doppler_cap_hz": {"slow": 1.0, "moderate": 100.0, "high": 2500.0, "abrupt": 5.0},
+    "delay_spread_s": 1e-7,
+    "profile": {"N128_QPSK": "C", "N128_16QAM": "E", "N256_QPSK": "A", "N256_16QAM": "C"},
+    "sos_frequencies": "fd*cos(seeded angles), 32 diffuse components/path; LOS0.7fd",
+    "main_fir": "65 taps, Kaiser beta10, DC normalized",
+    "reference_fir": "257 taps, Kaiser beta16, DC normalized, latency aligned",
+    "abrupt_events": {"35": "paths2 and4 amplitudes set to zero", "55": "birth delay2.3, amplitude0.45 exp(0.3j), frequency0.23fd", "80": "birth path removed"},
+    "payload_fraction": 0.5,
+    "cp_samples": 96
+  },
+  "episode_frames": 100,
+  "sample_start": "frame_index * (N + CP)",
+  "frame_noise": "independent complex Gaussian, E|noise|^2=N0",
+  "payloads": "independent random bits; no cross-frame payload warm start"
+}

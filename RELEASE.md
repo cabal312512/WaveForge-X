@@ -1,27 +1,27 @@
-# WaveForge-X 1.0.0 — CertiPHY research snapshot
+# WaveForge-X 1.1.0 — integrated experimental research
 
-This release consolidates the working receiver and its experimental record into
-one reproducible public edition.
+This release expands the existing receiver edition into a consolidated record
+of waveform adaptation, compute-budgeted reception and reusable preparation.
 
-- OFDM/OTFS/AFDM, sparse full-channel time-domain PCG, Gray energy checks,
-  conditional spectral bounds, directional refinement and a selective gate.
-- A frozen 48-cluster/288-frame confirmation study with actual quality-matched
-  baselines, complete preparation cost accounting and five core figures.
-- Received signals, transmitted bits, reference solutions, receiver outputs,
-  development/validation selection records and SHA-256 manifests.
-- Supporting method-development evidence, mathematical assumptions, numerical
-  tests and a compact prior-art assessment.
-- Original vector identity, English documentation and MIT licensing to cabal312512.
+- Runnable physical-layer and nonstationary policy modules, including independent
+  reevaluation and the corrected probe-order experiment.
+- Complete sparse time-domain reception and finite-budget symbol-domain baselines.
+- Reuse dependency validation, actual sparse-coefficient changes, explicit payload
+  selection and regression fixes for noncanonical channel inputs.
+- Topic-based English methods/results, compact prior experiments, new episode and
+  frame outcome tables, and representative received-data fixtures.
+- Checksummed evidence, tests, the original artwork and MIT licensing.
 
-At the primary 0.01 disagreement budget, selective refinement reduces modeled
-work by 0.47% relative to Gray, without a CPU improvement. Full refinement costs
-2.42% more overall. At the tight empirical quality target it is 4.58% more expensive
-than tuned residual stopping. The benefit is conditional; negative findings remain
-part of this release.
+Negative results remain visible: the tested joint selector consumes 2.49× fixed
+configuration work while worsening BER; additional phase refinement does not
+generally outperform strong cached receivers. Work ratios are not CPU speedups.
+The receiver targets same-model linear-reference decisions; end-to-end validated
+floating-point certification is not established.
 
-This is a software/evidence release, not a peer-reviewed paper or a validated
-floating-point certification claim. The finite-FIR channels are TR 38.901
-profile-based and their approximation error is reported explicitly.
+This edition adds no newly collected PHY experiment or controlled timing claim.
+Existing experimental records are organized and independently checked for this
+software release. Raw reuse fixtures are explicitly four-frame prefixes; complete
+100-frame outcome metrics and episode tables are preserved.
 
-Assets: `certiphy-evidence.zip`, `method-development.zip`, and `SHA256SUMS`.
-The repository's automatic source archives contain the runnable public edition.
+Assets: `certiphy-evidence.zip`, `method-development.zip`, `reuse-evidence.zip`,
+and `SHA256SUMS`. Automatic source archives contain the runnable public code.

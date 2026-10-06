@@ -1,0 +1,9 @@
+engine,family,frames,spectrum_hit,static_hit,rebuilds,invalidations,weak_updates,fallback,unknown_checks,completion,observed_violations
+synthetic,abrupt,3600,0.3627946127946128,0.9797979797979798,2262,1965,243,45,0,1.0,0
+synthetic,high,3600,0.0,1.0,3600,0,0,0,0,1.0,0
+synthetic,moderate,3600,0.0,1.0,3600,1626,0,0,0,1.0,0
+synthetic,slow,3600,0.49242424242424243,1.0,1845,1302,507,0,0,1.0,0
+tdl,abrupt,3600,0.05808080808080808,0.9797979797979798,3393,3216,141,0,0,1.0,0
+tdl,high,3600,0.0,1.0,3600,1701,0,0,0,1.0,0
+tdl,moderate,3600,0.0,1.0,3477,3390,0,123,0,1.0,0
+tdl,slow,3600,0.132996632996633,1.0,3126,2376,714,0,0,1.0,0

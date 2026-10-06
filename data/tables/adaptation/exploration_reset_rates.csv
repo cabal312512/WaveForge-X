@@ -1,0 +1,10 @@
+policy,exploration,reset
+always_afdm,0.0,0.0
+always_ofdm,0.0,0.0
+always_otfs,0.0,0.0
+block,0.0,0.0
+cadc,0.2,0.0
+linucb,0.46989583333333335,0.0
+offline_historical,0.0,0.0
+sticky,0.1621875,0.0
+uncertainty_aware,0.21666666666666667,0.03177083333333333

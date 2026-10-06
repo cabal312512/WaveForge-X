@@ -1,0 +1,30 @@
+experiment:
+  name: papr
+  seed: 42
+  kind: papr
+system:
+  waveforms:
+  - ofdm
+  - otfs
+  - afdm
+  modulation: qpsk
+  frame_size: 64
+  cp_length: 8
+  subcarriers: 8
+  sample_rate_hz: 64000
+channel:
+  model: awgn
+receiver:
+  detectors:
+  - lmmse
+  solver: auto
+  dense_threshold: 64
+monte_carlo:
+  max_frames: 2000
+  min_frames: 1
+  min_bit_errors: 0
+  progress: false
+sweep: {}
+plotting:
+  enabled: true
+  papr_oversampling: 4

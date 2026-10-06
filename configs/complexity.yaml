@@ -1,0 +1,47 @@
+experiment:
+  name: complexity
+  seed: 42
+  kind: complexity
+system:
+  waveforms:
+  - ofdm
+  - otfs
+  - afdm
+  modulation: qpsk
+  frame_size: 64
+  cp_length: 8
+  subcarriers: 8
+  sample_rate_hz: 64000
+channel:
+  model: doubly_selective
+  snr_db: 12
+  max_doppler_hz: 800
+  paths:
+  - delay_samples: 0
+    power_db: 0
+    doppler_hz: 800
+  - delay_samples: 2
+    power_db: -3
+    doppler_hz: -430.5
+  - delay_samples: 5
+    power_db: -7
+    doppler_hz: 171.25
+receiver:
+  detectors:
+  - lmmse
+  solver: auto
+  dense_threshold: 64
+monte_carlo:
+  max_frames: 8
+  min_frames: 1
+  min_bit_errors: 0
+  progress: false
+sweep:
+  frame_size:
+  - 32
+  - 64
+  - 128
+  - 256
+plotting:
+  enabled: true
+  papr_oversampling: 4

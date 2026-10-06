@@ -1,0 +1,41 @@
+experiment:
+  name: otfs_baseline
+  seed: 42
+  kind: ber
+system:
+  waveforms:
+  - otfs
+  modulation: qpsk
+  frame_size: 64
+  cp_length: 8
+  subcarriers: 8
+  sample_rate_hz: 64000
+channel:
+  model: static_tdl
+  paths:
+  - delay_samples: 0
+    power_db: 0
+  - delay_samples: 2
+    power_db: -3
+  - delay_samples: 5
+    power_db: -7
+receiver:
+  detectors:
+  - lmmse
+  solver: auto
+  dense_threshold: 64
+monte_carlo:
+  max_frames: 100
+  min_frames: 20
+  min_bit_errors: 200
+  progress: false
+sweep:
+  snr_db:
+  - 0
+  - 4
+  - 8
+  - 12
+  - 16
+plotting:
+  enabled: true
+  papr_oversampling: 4

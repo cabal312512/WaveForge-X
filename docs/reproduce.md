@@ -22,7 +22,7 @@ across arbitrary numerical libraries.
 .venv/bin/python scripts/make_figures.py
 ```
 
-Verification checks the two archive SHA-256 values and every member against its
+Verification checks all three archive SHA-256 values and every member against its
 manifest. Extraction is path-checked, refuses differing existing files, and places
 only the main recorded study under `results/certiphy`. The original source snapshot
 stays in the archive as provenance. Figure generation reads saved records and
@@ -31,6 +31,10 @@ creates `results/certiphy/analysis/*.png`, not new PHY observations.
 `scripts/check_publication.py` checks public receiver outputs/work against six
 saved confirmation cases (all three waveforms, two channel conditions). It is a
 packaging regression, not another statistical confirmation or a retuning step.
+The integrated receiver charges an additional `4*N*bits_per_symbol` work units
+for explicit output selection. Outputs and iteration counts must match the
+original fixtures; total work must differ by exactly this documented setup fee.
+Historical saved costs remain unchanged.
 
 ## Fresh, separate experiments
 
@@ -98,4 +102,29 @@ is in [Research](research.md).
   waveforms/frames. Per-bit binomial confidence intervals are not substituted.
 
 Raw observed CPU values are preserved; reproducing plots does not remeasure time.
+
+## Adaptation, budgets and reuse
+
+The integrated CLI supports link and nonstationary waveform-policy experiments:
+`python -m waveforge6g run configs/smoke.yaml` and
+`python -m waveforge6g research configs/research/smoke.yaml`.
+Use `scripts/research_v2.py --help` and `scripts/research_v3.py --help` for the
+independent-feedback and receiver-budget study interfaces. These are fresh
+simulation entry points, not required to inspect saved evidence.
+
+For reusable preparation, `scripts/research_v6.py --help` and
+`scripts/research_v7.py --help` expose the phased runners. They preserve original
+output/config identifiers for provenance. Use a separate clone for full fresh
+development/validation/confirmation so that saved data are not overwritten.
+The original frozen hashes describe the original experiment sources; a changed
+public checkout has a different packaging identity. Fresh development and
+validation regenerate the appropriate source freeze before confirmation.
+
+`reuse-evidence.zip` contains all 403,200 recorded confirmation method/frame
+outcomes, complete episode tables being in `data/tables/reuse-*`. Its 48 received
+fixtures each contain four initial frames, with explicit indices and all three
+waveforms; they are diagnostic prefixes rather than full 100-frame timing runs.
+They retain actual received data, transmitted truth, reference information and
+algorithm output bits. Receivers themselves do not read the offline truth or
+reference arrays. See [experiment record](experiment-record.md) for coverage.
 The package's successful tests do not change `floating_point_certified=False`.
